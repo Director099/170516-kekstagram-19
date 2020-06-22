@@ -1,4 +1,6 @@
-export const templateModalPicture = (photo) => {
+import {createElement} from '../utils';
+
+const templateModalPicture = (photo) => {
   return (
     `<section class="big-picture  overlay  hidden">
       <h2 class="big-picture__title  visually-hidden">Просмотр фотографии</h2>
@@ -43,3 +45,21 @@ export const templateModalPicture = (photo) => {
     </section>`
   );
 };
+
+export default class BigPicture {
+  /**
+   * @description Возвращает ДОМ элемент
+   * @return {null}
+   */
+  // getElement() {
+  //   if (!this._elem) {
+  //     this._elem = createElement(this.getTemplate());
+  //   }
+  //
+  //   return this._elem;
+  // }
+  //
+  getTemplate() {
+    return templateModalPicture();
+  }
+}

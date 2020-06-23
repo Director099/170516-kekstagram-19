@@ -31,7 +31,7 @@ export const generatePhoto = () => {
     like: randomNumber(0, 999),
     description: descriptions[randomNumber(0, descriptions.length - 1)],
     comments: [{
-      avatar: `img/avatar-${randomNumber(1, 6)}.svg`,
+      avatar: `${randomNumber(1, 6)}.svg`,
       message: messages[randomNumber(0, messages.length - 1)],
       name: names[randomNumber(0, names.length - 1)]
     }],

@@ -1,11 +1,11 @@
 const templatePicture = (info) => {
-  // const {url} = info;
+  const {url, like, comments} = info;
   return (
     `<a href="#" class="picture">
-      <img class="picture__img" src="" width="182" height="182" alt="Случайная фотография">
+      <img class="picture__img" src="${url}" width="182" height="182" alt="Случайная фотография">
       <p class="picture__info">
-        <span class="picture__comments"></span>
-        <span class="picture__likes"></span>
+        <span class="picture__comments">${comments.length}</span>
+        <span class="picture__likes">${like}</span>
       </p>
     </a>`
   );

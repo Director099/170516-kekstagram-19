@@ -1,3 +1,5 @@
+import {createElement} from '../utils';
+
 const templatePicture = (info) => {
   const {url, like, comments} = info;
   return (
@@ -18,5 +20,21 @@ export default class Picture {
 
   getTemplate() {
     return templatePicture(this._info);
+  }
+
+  /**
+   * @description Возвращает ДОМ элемент
+   * @return {null}
+   */
+  getElement() {
+    if (!this._elem) {
+      this._elem = createElement(this.getTemplate());
+    }
+
+    return this._elem;
+  }
+
+  setClickHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`click`, handler);
   }
 }

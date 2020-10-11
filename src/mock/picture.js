@@ -25,7 +25,7 @@ const descriptions = [
   `Я не знаю как закончится вторая мировая война, но знаю как начнется третяя, камнями и палками`
 ];
 
-export const generatePhoto = () => {
+const generatePhoto = () => {
   return {
     url: `photos/${randomNumber(1, 25)}.jpg`,
     like: randomNumber(0, 999),
@@ -37,3 +37,9 @@ export const generatePhoto = () => {
     }],
   };
 };
+
+const generatePhotos = (count) => {
+  return new Array(count).fill(``).map(generatePhoto);
+};
+
+export {generatePhoto, generatePhotos};

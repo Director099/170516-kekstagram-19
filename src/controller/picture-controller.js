@@ -1,21 +1,20 @@
 import Picture from '../components/picture';
+import {render} from '../utils';
 
+const picturesContainer = document.querySelector(`.pictures`);
 
+const renderPhoto = (photoInfo) => {
+  photoInfo.forEach((item) => {
+    render(picturesContainer, new Picture(item).getTemplate());
+  });
+};
 
 export default class PictureController {
   constructor(container) {
     this._container = container;
   }
 
-  render() {
-    // const renderPhoto = (photoInfo) => {
-    //   return photoInfo.forEach((item) => {
-    //     new Picture(item).getTemplate();
-    //   });
-    // };
-    //
-    // return renderPhoto(this._container);
-
-    return new Picture(this._container).getTemplate();
+  render(infoPicture) {
+    return renderPhoto(infoPicture);
   }
 }

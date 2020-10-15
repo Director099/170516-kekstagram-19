@@ -1,11 +1,20 @@
 import Picture from '../components/picture';
 import {render} from '../utils';
+import BigPicture from '../components/big-picture';
 
 const picturesContainer = document.querySelector(`.pictures`);
 
 const renderPhoto = (photoInfo) => {
+  let elementPicture = null;
+
   photoInfo.forEach((item) => {
-    render(picturesContainer, new Picture(item).getTemplate());
+    elementPicture = new Picture(item);
+    render(picturesContainer, elementPicture.getTemplate());
+  });
+
+
+  elementPicture.setClickHandler(`.picture__img`, function () {
+    console.log(0);
   });
 };
 
@@ -15,6 +24,6 @@ export default class PictureController {
   }
 
   render(infoPicture) {
-    return renderPhoto(infoPicture);
+    renderPhoto(infoPicture);
   }
 }

@@ -1,22 +1,7 @@
 import Picture from '../components/picture';
-import {render} from '../utils';
 import BigPicture from '../components/big-picture';
+import {render, keyCode} from '../utils';
 
-const picturesContainer = document.querySelector(`.pictures`);
-
-const renderPhoto = (photoInfo) => {
-  let elementPicture = null;
-
-  photoInfo.forEach((item) => {
-    elementPicture = new Picture(item);
-    render(picturesContainer, elementPicture.getTemplate());
-  });
-
-
-  elementPicture.setClickHandler(`.picture__img`, function () {
-    console.log(0);
-  });
-};
 
 export default class PictureController {
   constructor(container) {
@@ -24,6 +9,46 @@ export default class PictureController {
   }
 
   render(infoPicture) {
-    renderPhoto(infoPicture);
+    this._picture = new Picture(infoPicture);
+    this._bigPicture = new BigPicture(infoPicture);
+
+    this._picture.setClickHandler(`.picture__img`, () => {
+      this._onClickPicture();
+    });
+
+    this._bigPicture.setClickHandler(`.cancel`, () => {
+      this._onCloseBigPicture();
+    });
+
+    render(this._container, this._picture.getElement());
+  }
+
+  _onClickPicture() {
+    const parentElementModal = this._bigPicture.getElement();
+    document.body.classList.add(`modal-open`);
+    parentElementModal.classList.remove(`hidden`);
+    document.querySelector(`main`).appendChild(parentElementModal);
+
+    document.addEventListener(`keydown`, (evt) => {
+      this._onEscKeydown(evt);
+    });
+
+    document.addEventListener(`click`, (evt) => {
+      if (evt.target.classList.contains(`overlay`)) {
+        this._onCloseBigPicture();
+      }
+    });
+  }
+
+  _onCloseBigPicture() {
+    document.body.classList.remove(`modal-open`);
+    this._bigPicture.getElement().remove();
+  }
+
+  _onEscKeydown(evt) {
+    if (evt.keyCode === keyCode.ESC) {
+      this._onCloseBigPicture();
+      document.removeEventListener(`keydown`, this._onEscKeydown);
+    }
   }
 }

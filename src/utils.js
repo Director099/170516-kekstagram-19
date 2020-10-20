@@ -1,5 +1,21 @@
-export const render = (elem, template) => {
-  elem.insertAdjacentHTML(`beforeEnd`, template);
+export const keyCode = {
+  ESC: 27
+};
+
+export const renderPosition = {
+  AFTERBEGIN: `afterbegin`,
+  BEFOREEND: `beforeend`,
+};
+
+export const render = (container, element, place = renderPosition.BEFOREEND) => {
+  switch (place) {
+    case renderPosition.AFTERBEGIN:
+      container.prepend(element);
+      break;
+    case renderPosition.BEFOREEND:
+      container.append(element);
+      break;
+  }
 };
 
 export const randomNumber = (min, max) => {

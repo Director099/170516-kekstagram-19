@@ -67,4 +67,8 @@ export default class BigPicture {
 
     return this._elem;
   }
+
+  setClickHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`click`, handler);
+  }
 }

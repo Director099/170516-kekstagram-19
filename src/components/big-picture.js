@@ -1,4 +1,5 @@
 import {createElement} from '../utils';
+import AbstractComponent from './abstract-component';
 
 const templateModalPicture = (info) => {
   const {comments, description, like, url} = info;
@@ -47,28 +48,13 @@ const templateModalPicture = (info) => {
   );
 };
 
-export default class BigPicture {
+export default class BigPicture extends AbstractComponent {
   constructor(info) {
+    super();
     this._info = info;
   }
 
   getTemplate() {
     return templateModalPicture(this._info);
-  }
-
-  /**
-   * @description Возвращает ДОМ элемент
-   * @return {null}
-   */
-  getElement() {
-    if (!this._elem) {
-      this._elem = createElement(this.getTemplate());
-    }
-
-    return this._elem;
-  }
-
-  setClickHandler(elem, handler) {
-    this.getElement().querySelector(elem).addEventListener(`click`, handler);
   }
 }

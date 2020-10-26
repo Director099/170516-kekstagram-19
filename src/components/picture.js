@@ -1,4 +1,4 @@
-import {createElement} from '../utils';
+import AbstractComponent from './abstract-component';
 
 const templatePicture = (info) => {
   const {url, like, comments} = info;
@@ -13,28 +13,13 @@ const templatePicture = (info) => {
   );
 };
 
-export default class Picture {
+export default class Picture extends AbstractComponent {
   constructor(info) {
+    super();
     this._info = info;
   }
 
   getTemplate() {
     return templatePicture(this._info);
-  }
-
-  /**
-   * @description Возвращает ДОМ элемент
-   * @return {null}
-   */
-  getElement() {
-    if (!this._elem) {
-      this._elem = createElement(this.getTemplate());
-    }
-
-    return this._elem;
-  }
-
-  setClickHandler(elem, handler) {
-    this.getElement().querySelector(elem).addEventListener(`click`, handler);
   }
 }

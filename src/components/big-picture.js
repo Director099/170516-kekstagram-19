@@ -57,4 +57,8 @@ export default class BigPicture extends AbstractComponent {
   getTemplate() {
     return templateModalPicture(this._info);
   }
+
+  setClickHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`click`, handler);
+  }
 }

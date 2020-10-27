@@ -22,4 +22,8 @@ export default class Picture extends AbstractComponent {
   getTemplate() {
     return templatePicture(this._info);
   }
+
+  setClickHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`click`, handler);
+  }
 }

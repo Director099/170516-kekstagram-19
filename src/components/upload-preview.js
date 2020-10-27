@@ -1,8 +1,7 @@
 import AbstractComponent from './abstract-component';
 
 const templateUploadPreview = () => {
-  return ` <!-- Форма редактирования изображения -->
-    <div class="img-upload__overlay  hidden">
+  return `<div class="img-upload__overlay  hidden">
       <div class="img-upload__wrapper">
         <div class="img-upload__preview-container">
 
@@ -94,5 +93,9 @@ const templateUploadPreview = () => {
 export default class UploadPreview extends AbstractComponent {
   getTemplate() {
     return templateUploadPreview();
+  }
+
+  setClickHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`click`, handler);
   }
 }

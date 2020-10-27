@@ -1,11 +1,7 @@
 // https://javascript.pages.academy/keksobooking/data - сервер получения данных
 
-import {generatePhotos} from './mock/picture';
-import PageController from './controller/page-controller';
+import ImgUploadController from './controller/img-upload-controller';
+const imgUploadController = new ImgUploadController();
+const picturesContainer = document.querySelector(`.pictures`);
 
-
-const MAX_COUNT = 25;
-const photos = generatePhotos(MAX_COUNT);
-const pageController = new PageController();
-
-pageController.render(photos);
+imgUploadController.render(picturesContainer);

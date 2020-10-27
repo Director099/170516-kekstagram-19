@@ -2,6 +2,10 @@ export const keyCode = {
   ESC: 27
 };
 
+export const Const = {
+  MAX_COUNT: 25,
+};
+
 export const renderPosition = {
   AFTERBEGIN: `afterbegin`,
   BEFOREEND: `beforeend`,

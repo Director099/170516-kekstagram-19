@@ -1,7 +1,9 @@
+import {generatePhotos} from '../mock/picture';
 import Picture from '../components/picture';
 import BigPicture from '../components/big-picture';
-import {render, keyCode} from '../utils';
+import {render, keyCode, Const} from '../utils';
 
+const photos = generatePhotos(Const.MAX_COUNT);
 
 export default class PictureController {
   constructor(container) {

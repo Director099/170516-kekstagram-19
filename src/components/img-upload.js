@@ -21,4 +21,12 @@ export default class ImgUpload extends AbstractComponent {
   getTemplate() {
     return templateUpload();
   }
+
+  setChangeHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`change`, handler);
+  }
+
+  setSubmitHandler(elem, handler) {
+    this.getElement().querySelector(elem).addEventListener(`submit`, handler);
+  }
 }
